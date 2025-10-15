@@ -38,5 +38,33 @@ public:
         }
     }
 
-    //Métodos de gestión y operaciones
+    //Mostrar matriz
+    void mostrar() {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++)
+                cout << datos[i][j] << "\t";
+            cout << endl;
+        }
+    }
+
+    //Multiplicacion
+    static MatrizDinamica<T> multiplicar(MatrizDinamica<T>& A, MatrizDinamica<T>& B) {
+        if (A.columnas != B.filas) {
+            cout << "No se pueden multiplicar (columnas A != filas B)\n";
+            exit(1);
+        }
+
+        MatrizDinamica<T> C(A.filas, B.columnas);
+
+        for (int i = 0; i < A.filas; i++) {
+            for (int j = 0; j < B.columnas; j++) {
+                C.datos[i][j] = 0;
+                for (int k = 0; k < A.columnas; k++) {
+                    C.datos[i][j] += A.datos[i][k] * B.datos[k][j];
+                }
+            }
+        }
+
+        return C;
+    }
 };

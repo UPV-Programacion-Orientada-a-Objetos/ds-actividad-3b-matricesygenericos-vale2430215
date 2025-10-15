@@ -12,6 +12,10 @@ int main() {
 
     cout<<"Matriz B: \n";
     B.ingresar();
+
+    cout<<"Multiplicacion de A x B\n";
+    MatrizDinamica<int> C = MatrizDinamica<int>::multiplicar(A, B);
+    C.mostrar();
     
     return 0;
 }
